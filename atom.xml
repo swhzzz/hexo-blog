@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>swh的爬坑之路</title>
+  <title>swhzzz的后花园</title>
   
   <link href="hexo-blog/atom.xml" rel="self"/>
   
-  <link href="https://swhzzz.github.io/"/>
+  <link href="https://swhzzz.github.io/hexo-blog/"/>
   <updated>2017-08-21T05:17:49.000Z</updated>
-  <id>https://swhzzz.github.io/</id>
+  <id>https://swhzzz.github.io/hexo-blog/</id>
   
   <author>
     <name>swh</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>test-article</title>
-    <link href="https://swhzzz.github.io/2017/08/21/test-article/"/>
-    <id>https://swhzzz.github.io/2017/08/21/test-article/</id>
+    <link href="https://swhzzz.github.io/hexo-blog/2017/08/21/test-article/"/>
+    <id>https://swhzzz.github.io/hexo-blog/2017/08/21/test-article/</id>
     <published>2017-08-21T05:16:37.000Z</published>
     <updated>2017-08-21T05:17:49.000Z</updated>
     
@@ -31,14 +31,14 @@
     </summary>
     
     
-      <category term="test" scheme="https://swhzzz.github.io/tags/test/"/>
+      <category term="test" scheme="https://swhzzz.github.io/hexo-blog/tags/test/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="https://swhzzz.github.io/2017/08/20/hello-world/"/>
-    <id>https://swhzzz.github.io/2017/08/20/hello-world/</id>
+    <link href="https://swhzzz.github.io/hexo-blog/2017/08/20/hello-world/"/>
+    <id>https://swhzzz.github.io/hexo-blog/2017/08/20/hello-world/</id>
     <published>2017-08-20T15:43:31.000Z</published>
     <updated>2017-08-20T15:43:31.000Z</updated>
     
