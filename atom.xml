@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>swhzzz的后花园</title>
   
-  <link href="hexo-blog/atom.xml" rel="self"/>
+  <link href="/hexo-blog/atom.xml" rel="self"/>
   
   <link href="https://swhzzz.github.io/hexo-blog/"/>
   <updated>2017-08-21T05:17:49.000Z</updated>
