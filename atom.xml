@@ -5,7 +5,7 @@
   <link href="/hexo-blog/atom.xml" rel="self"/>
   
   <link href="https://swhzzz.github.io/"/>
-  <updated>2017-08-24T07:08:48.000Z</updated>
+  <updated>2017-08-30T15:48:40.000Z</updated>
   <id>https://swhzzz.github.io/</id>
   
   <author>
@@ -16,22 +16,40 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>css居中收录</title>
-    <link href="https://swhzzz.github.io/2017/08/24/css%E5%B1%85%E4%B8%AD%E6%94%B6%E5%BD%95/"/>
-    <id>https://swhzzz.github.io/2017/08/24/css居中收录/</id>
-    <published>2017-08-24T07:08:05.000Z</published>
-    <updated>2017-08-24T07:08:48.000Z</updated>
+    <title>Vue生命周期</title>
+    <link href="https://swhzzz.github.io/2017/08/30/Vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/"/>
+    <id>https://swhzzz.github.io/2017/08/30/Vue生命周期/</id>
+    <published>2017-08-30T14:15:30.000Z</published>
+    <updated>2017-08-30T15:48:40.000Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="css常用的居中方法"><a href="#css常用的居中方法" class="headerlink" title="css常用的居中方法"></a>css常用的居中方法</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="浅谈Vue生命周期"><a href="#浅谈Vue生命周期" class="headerlink" title="浅谈Vue生命周期"></a>浅谈Vue生命周期</h1><p>每个vue实例在被创建之前都要经过初始化。例如观测数据，初始化事件，挂载Dom，同时data变化时，更新Dom，在这一系列过程中有着一些钩子，在完成某些特定的条件时，便会触发，我们称它为钩子函数。一个实例从创建到销毁的过程则称之为实例的生命周期。</p>
+<p>这是一张vue生命周期的图解，原作者@老马自嘲<br><a href="http://images.cnblogs.com/cnblogs_com/fly_dragon/276813/o_lifecycle-%E6%A0%87%E6%B3%A8%E7%89%88%E6%9C%AC.png" target="_blank" rel="external">生命周期图解</a></p>
+<p>下面介绍一下vue的钩子函数：</p>
+<ul>
+<li><code>beforeCreate</code><br>beforeCreate发生在<code>new Vue()</code>之后，但在还没有观测数据之前调用</li>
+<li><code>created</code><br>在观测数据以及vue内部初始化事件后调用created钩子</li>
+<li><code>beforeMount</code><br>开始挂载钩子，但是还没有生成HTML到页面上，此时标签内任然是Mustach</li>
+<li><code>mounted</code><br>挂载完成，html渲染到页面上，此时可以用axios发送一些ajax请求</li>
+<li><code>beforeUpdate</code><br>在数据更新之前调用的钩子</li>
+<li><code>updated</code><br>数据更新之后调用,之后多次更新数据任然会调用此钩子</li>
+<li><code>beforeDestroy</code><br>vue实例销毁前执行</li>
+<li><code>destroyed</code><br>vue实例销毁后执行，此后vue的watcher，组件，以及时间都被卸载，不能使用，但是data任然存在</li>
+</ul>
+<p>最后理一遍思路，先new Vue()创建一个实例，调用beforeCreate钩子，观测数据，初始化事件，调用created钩子，判断el是否存在，若不存在则等到vm.mount(el)被调用才继续往下执行，若存在，则继续判断template是否存在，若template存在，则把data和template结合，但是不放到页面上，若不存在则使用el的outerHTML作为html，接着调用beforeMount钩子，此时，页面上忍让是大胡子语法的标签，把结合的html放到页面上，调用mounted钩子。当数据发生变化时，先调用beforeUpdate钩子，虚拟Dom渲染数据，然后调用updated钩子。最后当destroy()被调用时，先执行destroy钩子，然后卸载组件，事件，watcher，再调用destroyed钩子，至此就是一个完整的vue生命周期。</p>
+<p>下面是一个vue生命周期的例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line"></div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;script type=<span class="string">"text/javascript"</span> src=<span class="string">"https://cdn.jsdelivr.net/vue/2.1.3/vue.js"</span>&gt;&lt;/script&gt;</div><div class="line">&lt;<span class="regexp">/head&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">&lt;body&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">    &lt;div id="app"&gt;</span></div><div class="line"><span class="regexp">        &lt;p&gt;&#123;&#123; message &#125;&#125;&lt;/</span>p&gt;</div><div class="line">    &lt;<span class="regexp">/div&gt;</span></div><div class="line"><span class="regexp"></span></div><div class="line"><span class="regexp">    &lt;script type="text/</span>javascript<span class="string">"&gt;</span></div><div class="line"><span class="string">        var app = new Vue(&#123;</span></div><div class="line"><span class="string">            el: '#app',</span></div><div class="line"><span class="string">            data: &#123;</span></div><div class="line"><span class="string">                message: "</span>monkeyWang is boy<span class="string">"</span></div><div class="line"><span class="string">            &#125;,</span></div><div class="line"><span class="string">            beforeCreate: function() &#123;</span></div><div class="line"><span class="string">                console.group('beforeCreate 创建前状态===============》');</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>el     : <span class="string">" + this.$el); //undefined</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>data   : <span class="string">" + this.$data); //undefined </span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>message: <span class="string">" + this.message)</span></div><div class="line"><span class="string">            &#125;,</span></div><div class="line"><span class="string">            created: function() &#123;</span></div><div class="line"><span class="string">                console.group('created 创建完毕状态===============》');</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>el     : <span class="string">" + this.$el); //undefined</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>data   : <span class="string">" + this.$data); //已被初始化 </span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>message: <span class="string">" + this.message); //已被初始化</span></div><div class="line"><span class="string">            &#125;,</span></div><div class="line"><span class="string">            beforeMount: function() &#123;</span></div><div class="line"><span class="string">                console.group('beforeMount 挂载前状态===============》');</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>el     : <span class="string">" + (this.$el)); //已被初始化</span></div><div class="line"><span class="string">                console.log(this.$el);</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>data   : <span class="string">" + this.$data); //已被初始化  </span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>message: <span class="string">" + this.message); //已被初始化  </span></div><div class="line"><span class="string">            &#125;,</span></div><div class="line"><span class="string">            mounted: function() &#123;</span></div><div class="line"><span class="string">                console.group('mounted 挂载结束状态===============》');</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>el     : <span class="string">" + this.$el); //已被初始化</span></div><div class="line"><span class="string">                console.log(this.$el);</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>data   : <span class="string">" + this.$data); //已被初始化</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>message: <span class="string">" + this.message); //已被初始化 </span></div><div class="line"><span class="string">            &#125;,</span></div><div class="line"><span class="string">            beforeUpdate: function() &#123;</span></div><div class="line"><span class="string">                console.group('beforeUpdate 更新前状态===============》');</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>el     : <span class="string">" + this.$el);</span></div><div class="line"><span class="string">                console.log(this.$el);</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>data   : <span class="string">" + this.$data);</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>message: <span class="string">" + this.message);</span></div><div class="line"><span class="string">            &#125;,</span></div><div class="line"><span class="string">            updated: function() &#123;</span></div><div class="line"><span class="string">                console.group('updated 更新完成状态===============》');</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>el     : <span class="string">" + this.$el);</span></div><div class="line"><span class="string">                console.log(this.$el);</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>data   : <span class="string">" + this.$data);</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>message: <span class="string">" + this.message);</span></div><div class="line"><span class="string">            &#125;,</span></div><div class="line"><span class="string">            beforeDestroy: function() &#123;</span></div><div class="line"><span class="string">                console.group('beforeDestroy 销毁前状态===============》');</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>el     : <span class="string">" + this.$el);</span></div><div class="line"><span class="string">                console.log(this.$el);</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>data   : <span class="string">" + this.$data);</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>message: <span class="string">" + this.message);</span></div><div class="line"><span class="string">            &#125;,</span></div><div class="line"><span class="string">            destroyed: function() &#123;</span></div><div class="line"><span class="string">                console.group('destroyed 销毁完成状态===============》');</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>el     : <span class="string">" + this.$el);</span></div><div class="line"><span class="string">                console.log(this.$el);</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>data   : <span class="string">" + this.$data);</span></div><div class="line"><span class="string">                console.log("</span>%c%s<span class="string">", "</span>color:red<span class="string">", "</span>message: <span class="string">" + this.message)</span></div><div class="line"><span class="string">            &#125;</span></div><div class="line"><span class="string">        &#125;)</span></div><div class="line"><span class="string">    &lt;/script&gt;</span></div><div class="line"><span class="string">&lt;/body&gt;</span></div><div class="line"><span class="string"></span></div><div class="line"><span class="string">&lt;/html&gt;</span></div></pre></td></tr></table></figure>
+<p>本文参考链接：</p>
+<p><a href="https://cn.vuejs.org/v2/guide/instance.html#实例生命周期" target="_blank" rel="external">Vue官方文档</a><br><a href="http://www.cnblogs.com/fly_dragon/p/6220273.html" target="_blank" rel="external">Vue入门系列</a><br><a href="https://www.zhihu.com/question/52917848" target="_blank" rel="external">知乎</a></p>
+]]></content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;css常用的居中方法&quot;&gt;&lt;a href=&quot;#css常用的居中方法&quot; class=&quot;headerlink&quot; title=&quot;css常用的居中方法&quot;&gt;&lt;/a&gt;css常用的居中方法&lt;/h1&gt;
+      &lt;h1 id=&quot;浅谈Vue生命周期&quot;&gt;&lt;a href=&quot;#浅谈Vue生命周期&quot; class=&quot;headerlink&quot; title=&quot;浅谈Vue生命周期&quot;&gt;&lt;/a&gt;浅谈Vue生命周期&lt;/h1&gt;&lt;p&gt;每个vue实例在被创建之前都要经过初始化。例如观测数据，初始化事件，挂载Dom，同时
     
     </summary>
     
     
-      <category term="css" scheme="https://swhzzz.github.io/tags/css/"/>
+      <category term="vue" scheme="https://swhzzz.github.io/tags/vue/"/>
     
   </entry>
   
@@ -64,26 +82,6 @@
     
     
       <category term="博客" scheme="https://swhzzz.github.io/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>test-article</title>
-    <link href="https://swhzzz.github.io/2017/08/21/test-article/"/>
-    <id>https://swhzzz.github.io/2017/08/21/test-article/</id>
-    <published>2017-08-21T05:16:37.000Z</published>
-    <updated>2017-08-21T05:17:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="This-is-a-test"><a href="#This-is-a-test" class="headerlink" title="This is a test."></a>This is a test.</h1>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;This-is-a-test&quot;&gt;&lt;a href=&quot;#This-is-a-test&quot; class=&quot;headerlink&quot; title=&quot;This is a test.&quot;&gt;&lt;/a&gt;This is a test.&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="test" scheme="https://swhzzz.github.io/tags/test/"/>
     
   </entry>
   

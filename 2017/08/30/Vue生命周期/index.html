@@ -78,7 +78,7 @@
 <link href="/hexo-blog/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="vue," />
 
 
 
@@ -96,16 +96,18 @@
 
 
 
-<meta name="description" content="多谢月相怜，今宵不忍圆。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="swhzzz的前端之旅">
-<meta property="og:url" content="https://swhzzz.github.io/index.html">
+<meta name="description" content="浅谈Vue生命周期每个vue实例在被创建之前都要经过初始化。例如观测数据，初始化事件，挂载Dom，同时data变化时，更新Dom，在这一系列过程中有着一些钩子，在完成某些特定的条件时，便会触发，我们称它为钩子函数。一个实例从创建到销毁的过程则称之为实例的生命周期。 这是一张vue生命周期的图解，原作者@老马自嘲生命周期图解 下面介绍一下vue的钩子函数：  beforeCreatebeforeCr">
+<meta name="keywords" content="vue">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue生命周期">
+<meta property="og:url" content="https://swhzzz.github.io/2017/08/30/Vue生命周期/index.html">
 <meta property="og:site_name" content="swhzzz的前端之旅">
-<meta property="og:description" content="多谢月相怜，今宵不忍圆。">
+<meta property="og:description" content="浅谈Vue生命周期每个vue实例在被创建之前都要经过初始化。例如观测数据，初始化事件，挂载Dom，同时data变化时，更新Dom，在这一系列过程中有着一些钩子，在完成某些特定的条件时，便会触发，我们称它为钩子函数。一个实例从创建到销毁的过程则称之为实例的生命周期。 这是一张vue生命周期的图解，原作者@老马自嘲生命周期图解 下面介绍一下vue的钩子函数：  beforeCreatebeforeCr">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-08-30T15:48:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="swhzzz的前端之旅">
-<meta name="twitter:description" content="多谢月相怜，今宵不忍圆。">
+<meta name="twitter:title" content="Vue生命周期">
+<meta name="twitter:description" content="浅谈Vue生命周期每个vue实例在被创建之前都要经过初始化。例如观测数据，初始化事件，挂载Dom，同时data变化时，更新Dom，在这一系列过程中有着一些钩子，在完成某些特定的条件时，便会触发，我们称它为钩子函数。一个实例从创建到销毁的过程则称之为实例的生命周期。 这是一张vue生命周期的图解，原作者@老马自嘲生命周期图解 下面介绍一下vue的钩子函数：  beforeCreatebeforeCr">
 
 
 
@@ -135,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="https://swhzzz.github.io/"/>
+  <link rel="canonical" href="https://swhzzz.github.io/2017/08/30/Vue生命周期/"/>
 
 
 
 
 
-  <title>swhzzz的前端之旅</title>
+  <title>Vue生命周期 | swhzzz的前端之旅</title>
   
 
 
@@ -170,9 +172,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-   page-home 
- ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -265,9 +265,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -297,9 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexo-blog/2017/08/30/Vue生命周期/" itemprop="url">Vue生命周期</a></h1>
+          <h1 class="post-title" itemprop="name headline">Vue生命周期</h1>
         
 
         <div class="post-meta">
@@ -349,9 +347,7 @@
       
 
       
-        
-          
-            <h1 id="浅谈Vue生命周期"><a href="#浅谈Vue生命周期" class="headerlink" title="浅谈Vue生命周期"></a>浅谈Vue生命周期</h1><p>每个vue实例在被创建之前都要经过初始化。例如观测数据，初始化事件，挂载Dom，同时data变化时，更新Dom，在这一系列过程中有着一些钩子，在完成某些特定的条件时，便会触发，我们称它为钩子函数。一个实例从创建到销毁的过程则称之为实例的生命周期。</p>
+        <h1 id="浅谈Vue生命周期"><a href="#浅谈Vue生命周期" class="headerlink" title="浅谈Vue生命周期"></a>浅谈Vue生命周期</h1><p>每个vue实例在被创建之前都要经过初始化。例如观测数据，初始化事件，挂载Dom，同时data变化时，更新Dom，在这一系列过程中有着一些钩子，在完成某些特定的条件时，便会触发，我们称它为钩子函数。一个实例从创建到销毁的过程则称之为实例的生命周期。</p>
 <p>这是一张vue生命周期的图解，原作者@老马自嘲<br><a href="http://images.cnblogs.com/cnblogs_com/fly_dragon/276813/o_lifecycle-%E6%A0%87%E6%B3%A8%E7%89%88%E6%9C%AC.png" target="_blank" rel="external">生命周期图解</a></p>
 <p>下面介绍一下vue的钩子函数：</p>
 <ul>
@@ -370,8 +366,6 @@
 <p>本文参考链接：</p>
 <p><a href="https://cn.vuejs.org/v2/guide/instance.html#实例生命周期" target="_blank" rel="external">Vue官方文档</a><br><a href="http://www.cnblogs.com/fly_dragon/p/6220273.html" target="_blank" rel="external">Vue入门系列</a><br><a href="https://www.zhihu.com/question/52917848" target="_blank" rel="external">知乎</a></p>
 
-          
-        
       
     </div>
     
@@ -386,144 +380,36 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://swhzzz.github.io/hexo-blog/2017/08/23/设计模式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="swh">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="http://p.kengdie.com/touxiang/1611/34/132115610.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="swhzzz的前端之旅">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/hexo-blog/2017/08/23/设计模式/" itemprop="url">常见的设计模式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-23T19:23:28+08:00">
-                2017-08-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/hexo-blog/tags/vue/" rel="tag"># vue</a>
           
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.工厂模式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">    <span class="keyword">let</span> o=&#123;&#125;</div><div class="line">    o.name=name</div><div class="line">    o.age=age</div><div class="line">    o.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>2.构造函数模式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name,age</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name=name</div><div class="line">    <span class="keyword">this</span>.age=age</div><div class="line">&#125;</div><div class="line">Person.prototype.sayName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</div><div class="line">&#125;</div><div class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> Person(<span class="string">'swh'</span>,<span class="number">23</span>)</div></pre></td></tr></table></figure>
-<p>3.单例模式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> People=(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> instance </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">            name: name</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        createPeople: <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span>(!instance)&#123;</div><div class="line">                instance=init(name)</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span> instance</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;)()</div><div class="line">People.createPeople(<span class="string">'swh'</span>) <span class="comment">// &#123;name: 'swh'&#125;</span></div><div class="line">People.createPeople(<span class="string">'sls'</span>) <span class="comment">// &#123;name: 'sls'&#125;</span></div></pre></td></tr></table></figure>
-<p>单例模式一旦被创建之后，返回值就不再发生变化</p>
-<p>4.模块模式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> People=(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> name=<span class="string">'sls'</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(name)</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">        name: name,</div><div class="line">        sayName: sayName</div><div class="line">    &#125;</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
-<p>通过闭包的方式，导出一个模块</p>
-<p>5.订阅发布模式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"> <span class="keyword">var</span> EventCenter = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">  <span class="keyword">var</span> events = &#123;&#125;;</div><div class="line">  <span class="comment">/*</span></div><div class="line"><span class="comment">    &#123;</span></div><div class="line"><span class="comment">      my_event: [&#123;handler: function(data)&#123;xxx&#125;&#125;, &#123;handler: function(data)&#123;yyy&#125;&#125;]</span></div><div class="line"><span class="comment">    &#125;</span></div><div class="line"><span class="comment">  */</span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">on</span>(<span class="params">evt, handler</span>)</span>&#123;</div><div class="line">    events[evt] = events[evt] || [];</div><div class="line">    events[evt].push(&#123;</div><div class="line">      handler: handler</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fire</span>(<span class="params">evt, args</span>)</span>&#123;</div><div class="line">    <span class="keyword">if</span>(!events[evt])&#123;</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;events[evt].length; i++)&#123;</div><div class="line">      events[evt][i].handler(args);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    on: on,</div><div class="line">    fire: fire</div><div class="line">  &#125;</div><div class="line">&#125;)();</div><div class="line">EventCenter.on(<span class="string">'hello'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'hello'</span>)</div><div class="line">&#125;)</div><div class="line">EventCenter.on(<span class="string">'hello'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'hello2'</span>)</div><div class="line">&#125;)</div><div class="line">EventCenter.fire(<span class="string">'hello'</span>) <span class="comment">// hello,hello2</span></div></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/hexo-blog/2017/08/23/设计模式/" rel="next" title="常见的设计模式">
+                <i class="fa fa-chevron-left"></i> 常见的设计模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
       
     </footer>
   </div>
@@ -533,10 +419,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -544,6 +431,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -564,8 +455,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://p.kengdie.com/touxiang/1611/34/132115610.jpg"
@@ -638,6 +538,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#浅谈Vue生命周期"><span class="nav-number">1.</span> <span class="nav-text">浅谈Vue生命周期</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -759,10 +675,10 @@
   
 
   
-    <script type="text/javascript" src="/hexo-blog/js/src/scrollspy.js?v=5.1.2"></script>
+  <script type="text/javascript" src="/hexo-blog/js/src/scrollspy.js?v=5.1.2"></script>
 <script type="text/javascript" src="/hexo-blog/js/src/post-details.js?v=5.1.2"></script>
 
-  
+
 
   
 
